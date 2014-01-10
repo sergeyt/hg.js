@@ -1,0 +1,42 @@
+{
+  "name": "hg.js",
+  "version": "0.0.0",
+  "description": "Simple api to run mercurial commands from nodejs",
+  "author": "Sergey Todyshev <stodyshev@gmail.com>",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sergeyt/hg.js.git"
+  },
+  "keywords": [
+    "hg",
+    "mercurial",
+    "nodejs"
+  ],
+  "contributors": [
+    "Sergey Todyshev <stodyshev@gmail.com>"
+  ],
+  "dependencies": {
+    "coffee-script": "~1.6.3",
+    "q": "~1.0.0",
+    "underscore": "~1.5.2",
+    "underscore.string": "~2.3.3",
+    "parse-diff": "0.0.8",
+    "async": "~0.2.9"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-coffeelint": "0.0.8",
+    "grunt-npm": "~0.0.2",
+    "grunt-bump": "~0.0.7",
+    "grunt-auto-release": "~0.0.2",
+    "grunt-cli": "~0.1.11",
+    "grunt-simple-mocha": "~0.4.0",
+    "should": "~2.1.1"
+  },
+  "scripts": {
+    "lint": "grunt lint",
+    "test": "grunt test"
+  }
+}
