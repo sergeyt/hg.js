@@ -1,7 +1,6 @@
 fs = require 'fs'
 path = require 'path'
-{spawn} = require 'child_process'
-Q = require 'q'
+exeq = require 'exequte'
 
 verbose = false
 
@@ -18,49 +17,11 @@ plugins = fs.readdirSync(__dirname)
 		factory.cmdname = name
 		return factory
 
-# todo move a separate micro module (e.g. qrun)
 # executes given hg command
 exec = (cwd, cmd, args) ->
 	args = [] if not args
-
-	# todo allow to configure exec options
-	opts =
-		encoding: 'utf8'
-		timeout: 1000 * 60
-		killSignal: 'SIGKILL'
-		maxBuffer: 1024 * 1024
-		cwd: cwd
-		env: process.env
-
-	# inherit process identity
-	opts.uid = process.getuid() if process.getuid
-	opts.gid = process.getgid() if process.getgid
-
-	def = Q.defer()
-
 	argv = [cmd, args...]
-	if verbose
-		console.log "hg #{argv.join(' ')}"
-	hg = spawn "hg", argv, opts
-
-	hg.stdout.on 'data', (data) ->
-		msg = data?.toString().trim()
-		def.resolve msg
-
-	hg.stderr.on 'data', (data) ->
-		msg = data?.toString().trim()
-		console.error data
-		def.reject msg
-
-	hg.on 'error', (err) ->
-		msg = err?.toString().trim()
-		console.error msg
-		def.reject msg
-
-	hg.on 'close', ->
-		def.resolve '' if def.promise.isPending()
-
-	return def.promise
+	exeq 'hg', argv, {cwd: cwd, verbose: verbose}
 
 # creates hg command runner
 hg = (dir) ->

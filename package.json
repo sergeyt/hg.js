@@ -22,7 +22,8 @@
     "underscore": "~1.5.2",
     "underscore.string": "~2.3.3",
     "parse-diff": "0.0.8",
-    "async": "~0.2.9"
+    "async": "~0.2.9",
+    "exequte": "0.0.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
