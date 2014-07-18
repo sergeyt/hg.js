@@ -10,14 +10,14 @@ module.exports = (hg) ->
 			return cmd.files([], opts)
 		# using unified diff format
 		rlist = revs.map (x) -> "-r #{x}"
-		args = ['--unified', diff_opts(opts)..., rlist...]
+		args = ['--unified=0', diff_opts(opts)..., rlist...]
 		hg.run('diff', args).then(parse)
 	# diff files
 	cmd.files = (files, opts) ->
 		# todo support more options
 		files = [] if not files
 		# using unified diff format
-		args = ['--unified', diff_opts(opts)...]
+		args = ['--unified=0', diff_opts(opts)...]
 		hg.run('diff', [args..., files...]).then(parse)
 	cmd
 
