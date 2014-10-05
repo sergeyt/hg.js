@@ -17,13 +17,13 @@
     "Sergey Todyshev <stodyshev@gmail.com>"
   ],
   "dependencies": {
-    "coffee-script": "~1.7",
+    "coffee-script": "~1.8",
     "q": "~1.0",
-    "underscore": "~1.6",
+    "underscore": "~1.7",
     "underscore.string": "~2.3",
-    "parse-diff": "~0.0.11",
-    "async": "~0.2.9",
-    "exequte": "0.0.3"
+    "parse-diff": "~0.0.12",
+    "async": "~0.9",
+    "exequte": "0.0.4"
   },
   "devDependencies": {
     "grunt": "~0.4",
