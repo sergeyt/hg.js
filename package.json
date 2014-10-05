@@ -14,7 +14,8 @@
     "nodejs"
   ],
   "contributors": [
-    "Sergey Todyshev <stodyshev@gmail.com>"
+    "Sergey Todyshev <stodyshev@gmail.com>",
+    "Grogdunn <frzlollo@gmail.com>"
   ],
   "dependencies": {
     "coffee-script": "~1.8",
