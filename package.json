@@ -1,6 +1,6 @@
 {
   "name": "hg.js",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Simple api to run mercurial commands from nodejs",
   "author": "Sergey Todyshev <stodyshev@gmail.com>",
   "main": "index.js",
