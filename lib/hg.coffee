@@ -41,7 +41,7 @@ hg = (dir, opts) ->
 
 	# runs given command
 	run = (cmd, args) ->
-		exec dir, cmd, args
+		exec dir, cmd, args, opts
 
 	api = {run: run}
 
