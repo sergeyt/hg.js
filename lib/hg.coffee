@@ -1,8 +1,7 @@
 fs = require 'fs'
 path = require 'path'
 exeq = require 'exequte'
-
-verbose = false
+_ = require "underscore"
 
 # load command plugins
 plugins = fs.readdirSync(__dirname)
@@ -18,13 +17,24 @@ plugins = fs.readdirSync(__dirname)
 		return factory
 
 # executes given hg command
-exec = (cwd, cmd, args) ->
+exec = (cwd, cmd, args, opts) ->
 	args = [] if not args
 	argv = [cmd, args...]
-	exeq 'hg', argv, {cwd: cwd, verbose: verbose}
+	exeq 'hg', argv, {cwd: cwd, verbose: opts.verbose}
 
 # creates hg command runner
-hg = (dir) ->
+hg = (dir, opts) ->
+	unless arguments.length
+		dir = process.cwd()
+		opts = {}
+
+	if _.isObject dir
+		opts = dir
+		dir = opts.dir
+
+	dir = process.cwd() unless dir
+	opts = {} unless opts
+
 	# todo support bundles and remote sessions
 	if not fs.existsSync dir
 		throw new Error "#{dir} does not exist"
