@@ -1,2 +1,2 @@
 require('coffee-script');
-module.exports = require('./lib/hg');
+module.exports = require('./src/hg');
