@@ -4,7 +4,7 @@ exeq = require 'exequte'
 _ = require "underscore"
 
 # load command plugins
-plugins = fs.readdirSync(__dirname)
+plugins = fs.readdirSync(path.join(__dirname, 'commands'))
 	.filter (file) ->
 		name = path.basename(file, '.coffee')
 		switch name
@@ -12,7 +12,7 @@ plugins = fs.readdirSync(__dirname)
 			else true
 	.map (file) ->
 		name = path.basename(file, '.coffee')
-		factory = require "./#{name}"
+		factory = require "./commands/#{name}"
 		factory.cmdname = name
 		return factory
 
